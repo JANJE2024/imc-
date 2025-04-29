@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur IMC - Accueil</title>
+  <style>
+    /* STYLE GENERAL */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #acb6e5);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: backgroundAnimation 8s infinite alternate ease-in-out;
+      overflow: hidden;
+    }
+
+    @keyframes backgroundAnimation {
+      0% { background-position: left; background-size: 100% 100%; }
+      50% { background-position: right; background-size: 120% 120%; }
+      100% { background-position: left; background-size: 100% 100%; }
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+      text-align: center;
+      animation: entranceAnimation 1.5s ease forwards;
+      transform-origin: center;
+    }
+
+    @keyframes entranceAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-20deg);
+        filter: brightness(0.5);
+      }
+      50% {
+        opacity: 0.7;
+        transform: scale(1.1) rotate(10deg);
+        filter: brightness(1.2);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+      }
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+      font-size: 28px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #34495e;
+    }
+
+    input[type="password"] {
+      padding: 12px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="password"]:focus {
+      border-color: #3498db;
+      outline: none;
+      box-shadow: 0 0 8px #3498db88;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
+    }
+
+    .error {
+      color: red;
+      margin-top: 15px;
+      font-weight: bold;
+      animation: shake 0.3s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Tongasoa ato amin'ny calculateur d'IMC by Joela 🚀</h1>
+    <p>Veuillez entrer le mot de passe pour accéder au calculateur :</p>
+    <input type="password" id="password" placeholder="Mot de passe">
+    <br>
+    <button onclick="checkPassword()">Valider</button>
+    <p id="error-message" class="error"></p>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const passwordInput = document.getElementById('password').value.trim();
+      const errorMessage = document.getElementById('error-message');
+      
+      const correctPassword = "IndiceDeMasse";
+
+      if(passwordInput === correctPassword) {
+        // Redirection
+        window.location.href = "imc_page2.html";
+      } else {
+        errorMessage.textContent = "Mot de passe incorrect 🚫 !";
+      }
+    }
+  </script>
+
+</body>
+</html>
